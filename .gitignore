@@ -1,6 +1,12 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+site_perso/__pycache__/
+blog/__pycache__/
 *.py[cod]
+
+#perso
+db.sqlite3
+.gitignore~
 
 # C extensions
 *.so
