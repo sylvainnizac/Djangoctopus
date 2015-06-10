@@ -2,6 +2,7 @@
 
 from django.http import HttpResponse
 from django.shortcuts import render
+from datetime import datetime
 
 # Create your views here.
 
@@ -24,3 +25,6 @@ def list_articles(request, month, year):
 
     text = "Vous avez demandé les articles de {0} {1}.".format(month, year)
     return HttpResponse(text)
+
+def date_actuelle(request):
+    return render(request, 'blog/date.html', {'date': datetime.now()})
