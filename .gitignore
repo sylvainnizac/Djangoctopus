@@ -7,6 +7,12 @@ blog/__pycache__/
 #perso
 db.sqlite3
 .gitignore~
+blog/urls.py~
+blog/views.py~
+site_perso/urls.py~
+site_perso/settings.py~
+blog/templates/blog/date.html~
+
 
 # C extensions
 *.so
