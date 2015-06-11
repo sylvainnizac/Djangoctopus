@@ -1,2 +1,4 @@
-<h1>Bienvenue sur mon blog</h1>
-<p>La date actuelle est : {{ date }}</p>
+{% extend "skeleton.html" %}
+{% block content %}
+    <p>La date actuelle est : {{ date }}</p>
+{% endblock %}
