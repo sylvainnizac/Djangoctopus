@@ -2,10 +2,10 @@
 __pycache__/
 site_perso/__pycache__/
 blog/__pycache__/
+blog/migrations/
 *.py[cod]
 
 #perso
-db.sqlite3
 .gitignore~
 blog/urls.py~
 blog/views.py~
