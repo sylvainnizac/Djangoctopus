@@ -3,7 +3,7 @@ from django import forms
 from urlshortner.models import MiniURL
 
 class AskToShort(forms.ModelForm):
-    """Formulaire de récupération de l'URL à raccourcir"""
+    """really, a description?"""
     class Meta:
         model = MiniURL
         fields = ('longurl', 'pseudo')

@@ -27,7 +27,7 @@ class MiniURL(models.Model):
         super(MiniURL, self).save(*args, **kwargs)
     
     def generer(self, nb_caracteres):
-        """on génère une chaine aléatoire de 6 caractères"""
+        """generate a random 6 char string"""
         caracteres = string.ascii_letters + string.digits
         aleatoire = [random.choice(caracteres) for _ in range(nb_caracteres)]
     
