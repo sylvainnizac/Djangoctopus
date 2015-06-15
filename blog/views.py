@@ -1,24 +1,29 @@
 # -*- coding: utf8 -*-
 
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.http import HttpResponse, Http404
+from django.shortcuts import render, get_object_or_404
 from datetime import datetime
+from blog.models import Article, Categorie
 
 # Create your views here.
 
 def home(request):
-    """Message d'accueil basique, pas de paramètre en entrée, juste le message en sortie"""
+    """génération de la page d'accueil'"""
+    return home_articles(request)
+    
+def home_articles(request):
+    """Retourne la liste des articles du plus récent au plus ancien"""
+    articles = Article.objects.order_by('-date')
+    return render(request, "blog/index.html", {'articles' : articles})
 
-    message = "<h1>Bienvenue sur mon blog!</1>"    
-    return HttpResponse(message)
-
-def view_article(request, id_article):
+def view_article(request, id_article, slug):
     """ Vue qui affiche un article selon son identifiant (ou ID, ici un numéro)
         Son ID est le second paramètre de la fonction (pour rappel, le premier
         paramètre est TOUJOURS la requête de l'utilisateur) """
-
-    text = "Vous avez demandé l'article #{0} !".format(id_article)
-    return HttpResponse(text)
+        
+    article = get_object_or_404(Article, id = id_article, slug = slug)
+        
+    return render(request, "blog/article.html", {'article' : article})
 
 def list_articles(request, month, year):
     """ Liste des articles d'un mois précis. """

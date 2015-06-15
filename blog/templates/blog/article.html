@@ -1,0 +1,8 @@
+{% extends "skeleton.html" %}
+{% block content %}
+        <div class="article">
+            <h3>{{ article.titre }}</h3>
+            <p>Par {{ article.auteur }} le {{ article.date }}<p>
+            <p>{{ article.contenu|linebreaks }}</p>
+        </div>
+{% endblock %}

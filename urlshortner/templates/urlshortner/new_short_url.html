@@ -1,0 +1,12 @@
+{% extends "skeleton.html" %}
+{% block content %}
+
+    {% if envoi %}Votre message a bien été envoyé !{% endif %}
+
+    <form action="{% url "urlshortner.views.new_short_url" %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+
+{% endblock %}
