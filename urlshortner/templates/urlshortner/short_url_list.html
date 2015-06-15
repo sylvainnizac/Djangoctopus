@@ -1,10 +1,10 @@
 {% extends "skeleton.html" %}
 {% block content %}
-    {% for url in surls %}
-        {% if url.pseudo != null %}
-            <p>{{ url.longurl }} via <a href="{{ request.get_host }}{% url 'url_redirection' mini.code %}">http://{{ request.get_host }}/{{ url.shorturl }}</a> par {{ url.pseudo }} ({{ url.nbacces }} accès)</p>
+    {% for data in surls %}
+        {% if data.pseudo != '' %}
+            <p>{{ data.longurl }} via <a href="http://{{ request.get_host }}{% url 'redirection' data.shorturl %}">http://{{ request.get_host }}/{{ data.shorturl }}</a> par {{ data.pseudo }} ({{ data.nbacces }} accès)</p>
         {% else %}
-            <p>{{ url.longurl }} via {{ url.shorturl }} ({{ url.nbacces }} accès)</p>
+            <p>{{ data.longurl }} via <a href="http://{{ request.get_host }}{% url 'redirection' data.shorturl %}">http://{{ request.get_host }}/{{ data.shorturl }}</a> ({{ data.nbacces }} accès)</p>
         {% endif %}
     {% empty %}
         <p>pas d'url à afficher</p>

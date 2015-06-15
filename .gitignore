@@ -3,6 +3,7 @@ __pycache__/
 site_perso/__pycache__/
 blog/__pycache__/
 blog/migrations/
+urlshortner/migrations/
 *.py[cod]
 
 #perso
