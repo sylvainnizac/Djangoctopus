@@ -2,7 +2,7 @@
 {% block content %}
     {% for url in surls %}
         {% if url.pseudo != null %}
-            <p>{{ url.longurl }} via <a href="{{ url.longurl }}">http://{{ request.get_host }}/{{ url.shorturl }}</a> par {{ url.pseudo }} ({{ url.nbacces }} accès)</p>
+            <p>{{ url.longurl }} via <a href="{{ request.get_host }}{% url 'url_redirection' mini.code %}">http://{{ request.get_host }}/{{ url.shorturl }}</a> par {{ url.pseudo }} ({{ url.nbacces }} accès)</p>
         {% else %}
             <p>{{ url.longurl }} via {{ url.shorturl }} ({{ url.nbacces }} accès)</p>
         {% endif %}
