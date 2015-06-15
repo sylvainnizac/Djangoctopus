@@ -13,6 +13,7 @@ def new_short_url(request):
     """formulaire de création d'URL courte"""
     #methode post est celle utilisée pour renvoyer les données du formulaire
     if request.method == 'POST':
+        s = MiniURL.generer(6)
         pass
     #donc si pas de données POST c'est qu'on arrive pour la première fois sur la page
     else:
