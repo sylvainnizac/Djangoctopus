@@ -24,6 +24,15 @@ def view_article(request, id_article, slug):
     article = get_object_or_404(Article, id = id_article, slug = slug)
         
     return render(request, "blog/article.html", {'article' : article})
+    
+def view_comments(request, id_article, slug):
+    """
+    return an article with it comments
+    """
+    article = get_object_or_404(Article, id = id_article, slug = slug)
+    comments = Comments.objects.filter().order_by('-date)
+    
+    return render(request, "blog/article_comments.html", {'article' : article, 'comments' : comments})
 
 def list_articles(request, month, year):
     """ Liste des articles d'un mois précis. """
