@@ -34,3 +34,20 @@ class Categorie(models.Model):
         this methode is designed to be used for administration and debbuging purpose
         """
         return self.nom
+
+class Comments(models.Model):
+    """
+    table of comments
+    """
+    pseudo = models.CharField(max_length=30)
+    article = models.ForeignKey('Article')
+    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date du commentaire")
+    description = models.TextField()
+    commentaire_visible = models.BooleanField(default = True)
+    
+    def __str__(self):
+        """
+        this methode is designed to be used for administration and debbuging purpose
+        """
+        return self.pseudo
+    
