@@ -6,6 +6,7 @@
             <p>Par {{ article.auteur }} le {{ article.date }}<p>
             <p>{{ article.contenu|truncatewords_html:80 }}</p>
             <p><a href="{% url 'blog.views.view_article' article.id article.slug %}">Lire la suite</a>
+            <p><a href="{% url 'blog.views.view_comments' article.id %}">Voir les commentaires</a>
         </div>
     {% empty %}
         <p>Aucun article.</p>
