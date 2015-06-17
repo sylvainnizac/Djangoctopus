@@ -19,6 +19,7 @@ class Article(models.Model):
         
     def titleslug(self):
         """
+        default slug field
         """
         return self.titre
 
