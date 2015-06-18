@@ -52,13 +52,3 @@ class Comments(models.Model):
         this methode is designed to be used for administration and debbuging purpose
         """
         return self.pseudo
-        
-    def save(self, *args, **kwargs):
-        if self.article is None:
-            self.link_article(args[0])
-
-        super(MiniURL, self).save(*args, **kwargs)
-        
-    def link_article(article_id):
-        self.article = article_id
-    
