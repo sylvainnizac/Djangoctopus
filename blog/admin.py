@@ -36,7 +36,39 @@ class ArticleAdmin(admin.ModelAdmin):
     # En-tête de notre colonne
     apercu_contenu.short_description = 'Aperçu du contenu'
 
+class CommentsAdmin(admin.ModelAdmin):
+    list_display   = ('pseudo', 'email', 'article', 'arpercu_description', 'date', 'commentaire_visible')
+    list_filter    = ('pseudo', 'article', 'email', )
+    date_hierarchy = 'date'
+    ordering       = ('-date', )
+    search_fields  = ('pseudo', 'email', 'article', )
+    
+        # Configuration du formulaire d'édition
+    fieldsets = (
+        # Fieldset 1 : meta-info (titre, auteur…)
+       ('Général',
+       {'fields': ('pseudo', 'email'), }),
+        # Fieldset 2 : contenu de l'article
+        ('Commentaire',
+        { 'description': 'Le formulaire n'accepte pas les balises HTML.',
+        'fields': ('description', )}),
+    )
+    
+    def apercu_description(self, commentaire):
+        """ 
+        Retourne les 40 premiers caractères du contenu du commentaire. S'il
+        y a plus de 40 caractères, il faut ajouter des points de suspension. 
+        """
+        text = commentaire.description[0:40]
+        if len(commentaire.description) > 40:
+            return '%s…' % text
+        else:
+            return text
+
+    # En-tête de notre colonne
+    apercu_description.short_description = 'Aperçu du commentaire'
+
 # Register your models here.
 admin.site.register(Categorie)
 admin.site.register(Article, ArticleAdmin)
-admin.site.register(Comments)
+admin.site.register(Comments, CommentsAdmin)
