@@ -47,9 +47,9 @@ def leave_comments(request, id_article, slug):
     """form for new comment creation"""
     #POST is used to return form data
     if request.method == 'POST':
-        form = NewCom(request.POST)
+        form = NewCom(request.POST, article=id_article)
         if form.is_valid():
-            form.save(id_article)
+            form.save()
             return redirect(view_article)
     #no POST data so certainly first instance of the page
     else:
