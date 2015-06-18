@@ -1,7 +1,7 @@
 # -*- coding: utf8 -*-
 
 from django.http import HttpResponse, Http404
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from datetime import datetime
 from blog.models import Article, Categorie, Comments
 from blog.forms import NewCom
@@ -39,18 +39,19 @@ def view_comments(article_id):
     """
     return comments of an article
     """
-    comments = Comments.objects.filter(article = article_id).order_by('-date')
+    comments = Comments.objects.filter(article = article_id, commentaire_visible=True).order_by('-date')
     
     return comments
 
 def leave_comments(request, id_article, slug):
-    """form for new comment creation"""
+    """path for new comment creation"""
     #POST is used to return form data
     if request.method == 'POST':
-        form = NewCom(request.POST, article=id_article)
+        name_article = get_object_or_404(Article, id = id_article)
+        form = NewCom(request.POST, article=name_article)
         if form.is_valid():
             form.save()
-            return redirect(view_article)
+            return redirect(view_article, id_article, slug)
     #no POST data so certainly first instance of the page
     else:
         form = NewCom()

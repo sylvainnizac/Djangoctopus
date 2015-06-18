@@ -37,7 +37,7 @@ class ArticleAdmin(admin.ModelAdmin):
     apercu_contenu.short_description = 'Aperçu du contenu'
 
 class CommentsAdmin(admin.ModelAdmin):
-    list_display   = ('pseudo', 'email', 'article', 'arpercu_description', 'date', 'commentaire_visible')
+    list_display   = ('pseudo', 'email', 'article', 'apercu_description', 'date', 'commentaire_visible')
     list_filter    = ('pseudo', 'article', 'email', )
     date_hierarchy = 'date'
     ordering       = ('-date', )
@@ -50,8 +50,11 @@ class CommentsAdmin(admin.ModelAdmin):
        {'fields': ('pseudo', 'email'), }),
         # Fieldset 2 : contenu de l'article
         ('Commentaire',
-        { 'description': 'Le formulaire n'accepte pas les balises HTML.',
+        { 'description': 'Le formulaire n\'accepte pas les balises HTML.',
         'fields': ('description', )}),
+        # Fieldset 3 : modération
+        ('Modération',
+        { 'fields': ('commentaire_visible', )}),
     )
     
     def apercu_description(self, commentaire):
