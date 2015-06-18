@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 from django.db import models
 
 class Article(models.Model):
@@ -40,9 +41,10 @@ class Comments(models.Model):
     table of comments
     """
     pseudo = models.CharField(max_length=30)
+    email = models.EmailField(verbose_name="E-mail", blank=True)
     article = models.ForeignKey('Article')
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date du commentaire")
-    description = models.TextField()
+    description = models.TextField(verbose_name="Votre commentaire")
     commentaire_visible = models.BooleanField(default = True)
     
     def __str__(self):
@@ -50,4 +52,13 @@ class Comments(models.Model):
         this methode is designed to be used for administration and debbuging purpose
         """
         return self.pseudo
+        
+    def save(self, *args, **kwargs):
+        if self.article is None:
+            self.link_article(args[0])
+
+        super(MiniURL, self).save(*args, **kwargs)
+        
+    def link_article(article_id):
+        self.article = article_id
     

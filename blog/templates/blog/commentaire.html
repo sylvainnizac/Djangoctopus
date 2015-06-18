@@ -1,0 +1,11 @@
+{% extends "blog/article.html" %}
+{% block comms %}
+        <div class="form_comment">
+            <form action="{% url 'blog.views.leave_comments' article.id article.slug %}" method="post">
+                {% csrf_token %}
+                {{ formu.as_p }}
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
+{% endblock %}
+

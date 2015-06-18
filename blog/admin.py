@@ -1,6 +1,6 @@
 # -*- coding: utf8 -*-
 from django.contrib import admin
-from blog.models import Categorie, Article
+from blog.models import Categorie, Article, Comments
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display   = ('titre', 'auteur', 'date', 'categorie', 'apercu_contenu')
@@ -39,3 +39,4 @@ class ArticleAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Categorie)
 admin.site.register(Article, ArticleAdmin)
+admin.site.register(Comments)
