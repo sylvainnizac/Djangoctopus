@@ -3,7 +3,7 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
 #generic views are ready to use standardsviews
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from datetime import datetime
 from blog.models import Article, Categorie, Comments
 from blog.forms import NewCom
@@ -12,7 +12,7 @@ from blog.forms import NewCom
 
 class List_Articles(ListView):
     """
-    This class allows to quickly call the article list. and return  other useful data for the page
+    This class allows to quickly call the article list. and return other useful data for the page
     """
     model=Article
     context_object_name="articles"
@@ -27,37 +27,26 @@ class List_Articles(ListView):
             return Article.objects.all()
 
     def get_context_data(self, **kwargs):
-        """recover and modify the context data"""
+        """recover and modify the context data to add the list of categories"""
         context = super(List_Articles, self).get_context_data(**kwargs)
         #add the new context data
         context['categories'] = Categorie.objects.all()
         return context
 
-def view_article(request, id_article, slug):
-    """ Vue qui affiche un article selon son identifiant (ou ID, ici un numéro)
-        Son ID est le second paramètre de la fonction (pour rappel, le premier
-        paramètre est TOUJOURS la requête de l'utilisateur) """
-        
-    article = recov_articles(id_article, slug)
-    comments = view_comments(id_article)
-        
-    return render(request, "blog/article.html", {'article' : article, 'comments' : comments})
+class Single_Article(DetailView):
+    """
+    similar to List_Articles but only 1 article and all it comments.
+    """
+    model=Article
+    context_object_name="article"
+    template_name="blog/article.html"
 
-def recov_articles(id_article, slug):
-    """
-    recover the concerned article
-    """
-    article = get_object_or_404(Article, id = id_article, slug = slug)
-    
-    return article
-
-def view_comments(article_id):
-    """
-    return comments of an article
-    """
-    comments = Comments.objects.filter(article = article_id, commentaire_visible=True).order_by('-date')
-    
-    return comments
+    def get_context_data(self, **kwargs):
+        """recover and modify the context data to add the list of comments"""
+        context = super(Single_Article, self).get_context_data(**kwargs)
+        #add the new context data
+        context['comments'] = Comments.objects.filter(article = context['article'], commentaire_visible=True).order_by('-date')
+        return context
 
 def leave_comments(request, id_article, slug):
     """path for new comment creation"""
