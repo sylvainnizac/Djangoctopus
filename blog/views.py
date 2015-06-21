@@ -8,15 +8,6 @@ from blog.forms import NewCom
 
 # Create your views here.
 
-def home(request):
-    """génération de la page d'accueil'"""
-    return home_articles(request)
-    
-def home_articles(request):
-    """Retourne la liste des articles du plus récent au plus ancien"""
-    articles = Article.objects.order_by('-date')
-    return render(request, "blog/index.html", {'articles' : articles})
-
 def view_article(request, id_article, slug):
     """ Vue qui affiche un article selon son identifiant (ou ID, ici un numéro)
         Son ID est le second paramètre de la fonction (pour rappel, le premier
