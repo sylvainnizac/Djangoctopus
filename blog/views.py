@@ -60,12 +60,3 @@ def leave_comments(request, id_article, slug):
     comments = view_comments(id_article)
 
     return render(request, "blog/commentaire.html", {'article' : article, 'comments' : comments, 'formu' : form})
-
-def list_articles(request, month, year):
-    """ Liste des articles d'un mois précis. """
-
-    text = "Vous avez demandé les articles de {0} {1}.".format(month, year)
-    return HttpResponse(text)
-
-def date_actuelle(request):
-    return render(request, 'blog/date.html', {'date': datetime.now()})
