@@ -1,5 +1,6 @@
 # -*- coding: utf8 -*-
 from django.conf.urls import patterns, url
+from urlshortner.views import MiniURLCreate
 
 urlpatterns = patterns('urlshortner.views',
     url(r'^$', 'short_url_list', name="liste"),
