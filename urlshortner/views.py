@@ -1,6 +1,7 @@
 # -*- coding: utf8 -*-
 from django.shortcuts import redirect, render, get_object_or_404
 from django.core.urlresolvers import reverse_lazy
+from django.views.generic import CreateView
 from urlshortner.models import MiniURL
 from urlshortner.forms import AskToShort
 
@@ -9,8 +10,8 @@ from urlshortner.forms import AskToShort
 class MiniURLCreate(CreateView):
     model = MiniURL
     template_name = 'urlshortner/new_short_url.html'
-    form_class = AskToSHort
-    success_url = reverse_lazy(liste)
+    form_class = AskToShort
+    success_url = reverse_lazy('liste')
 
 def short_url_list(request):
     """return the list of URLs ordered by number of call"""
