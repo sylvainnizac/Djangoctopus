@@ -11,14 +11,7 @@ class NewCom(forms.ModelForm):
             self.article = kwargs.pop('article')
         super(NewCom, self).__init__(*args, **kwargs)
         
-    def save(self, commit=True):
-        # On sauve sans faire la requête SQL (commit=False) pour
-        # pouvoir ajouter à l'instance la foreignkey
-        super(NewCom, self).save(commit=False)
-        # On ajoute à l'instance la foreignkey
-        self.instance.article = self.article
-        # On peut maintenant sauver
-        super(NewCom, self).save(commit)
+
         
     class Meta:
         model = Comments

@@ -1,10 +1,14 @@
 # -*- coding: utf8 -*-
 
+from datetime import datetime
+
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
-#generic views are ready to use standard sviews
-from django.views.generic import ListView, DetailView
-from datetime import datetime
+from django.core.urlresolvers import reverse_lazy
+#generic views are ready to use standard views
+from django.views.generic import ListView, DetailView, CreateView
+
+
 from blog.models import Article, Categorie, Comments
 from blog.forms import NewCom
 
@@ -47,6 +51,27 @@ class Single_Article(DetailView):
         #add the new context data
         context['comments'] = Comments.objects.filter(article = context['article'], commentaire_visible=True).order_by('-date')
         return context
+        
+class Leave_Comments(CreateView):
+    """
+    another standard view. creating data via a form this time
+    """
+    model = Comments
+    template_name = 'blog/commentaire.html'
+    form_class = NewCom
+    success_url = reverse_lazy("lire_article")
+    
+    def get_context_data(self, **kwargs):
+        """Add a few data to improve our page"""
+        context = super(Leave_Comments, self).get_context_data(**kwargs)
+        context['article'] = get_object_or_404(Article, id = self.kwargs['pk'])
+        context['comments'] = Comments.objects.filter(article = self.kwargs['pk'], commentaire_visible=True).order_by('-date')
+        return context
+        
+    def form_valid(self, form, **kwargs):
+        """"""
+        form = NewCom(form, article = self.kwargs['pk'])
+        return super(Leave_Comments, self).form_valid(form)
 
 def leave_comments(request, id_article, slug):
     """path for new comment creation"""
