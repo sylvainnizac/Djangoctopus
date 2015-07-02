@@ -1,6 +1,6 @@
 # -*- coding: utf8 -*-
 from django import forms
-from blog.models import Comments
+from blog.models import Comment
 
 class NewCom(forms.ModelForm):
     """really, a description?"""
@@ -21,5 +21,5 @@ class NewCom(forms.ModelForm):
         super(NewCom, self).save(commit)
         
     class Meta:
-        model = Comments
+        model = Comment
         fields = ('pseudo', 'email', 'description')
