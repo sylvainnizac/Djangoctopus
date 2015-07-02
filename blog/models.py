@@ -36,7 +36,7 @@ class Categorie(models.Model):
         """
         return self.nom
 
-class Comments(models.Model):
+class Comment(models.Model):
     """
     table of comments
     """
