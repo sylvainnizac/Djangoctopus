@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 #generic views are ready to use standards views
 from django.views.generic import ListView, DetailView
 from datetime import datetime
-from blog.models import Article, Categorie, Comments
+from blog.models import Article, Categorie, Comment
 from blog.forms import NewCom
 
 # Create your views here.
@@ -45,7 +45,7 @@ class Single_Article(DetailView):
         """recover and modify the context data to add the list of comments"""
         context = super(Single_Article, self).get_context_data(**kwargs)
         #add the new context data
-        context['comments'] = Comments.objects.filter(article = context['article'], commentaire_visible=True).order_by('-date')
+        context['comments'] = Comment.objects.filter(article = context['article'], commentaire_visible=True).order_by('-date')
         return context
 
 def leave_comments(request, id_article, slug):
@@ -79,6 +79,6 @@ def view_comments(article_id):
     """
     return comments of an article
     """
-    comments = Comments.objects.filter(article = article_id, commentaire_visible=True).order_by('-date')
+    comments = Comment.objects.filter(article = article_id, commentaire_visible=True).order_by('-date')
     
     return comments

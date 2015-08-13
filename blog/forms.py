@@ -23,3 +23,7 @@ class NewCom(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('pseudo', 'email', 'description')
+        widgets = {'pseudo': forms.TextInput(attrs={'placeholder': 'Ton pseudo'}),
+                   'email': forms.EmailInput(attrs={'placeholder': 'Ton mail (optionnel)'}),
+                   'description': forms.Textarea(attrs={'placeholder': 'Ton commentaire'})}
+        labels = {'pseudo': '', 'email': '', 'description': ''}
