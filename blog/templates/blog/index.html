@@ -1,33 +1,61 @@
 {% extends "skeleton.html" %}
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href={% static 'css/blog.css' %} />
+{% endblock %}
 {% block content %}
-    {% for article in articles %}
-        <div class="article">
-            <h3>{{ article.titre }}</h3>
-            <p>Par {{ article.auteur }} le {{ article.date }}<p>
-            <p>{{ article.contenu|truncatewords_html:80 }}</p>
-            <p><a href="{% url 'lire_article' article.id %}">Lire la suite</a>
-        </div>
-    {% empty %}
-        <p>Aucun article.</p>
-    {% endfor %}
+    <section class="row">
+        <aside class="col-sm-2 sidebar">
+            <div class="row sidebar-module sidebar-module-inset">
+                <h4>About</h4>
+                <p>Je n'entend pas faire ce ce site une référence de quoi que ce soit mais juste un laboratoire pour mes tests.</p>
+            </div>
+            <div class="row">
+                <h4>Catégories</h4>
+                <ul>
+                {% for categorie in categories %}
+                    <li><a href="{% url "blog_categorie" categorie.id %}">{{ categorie.nom }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div class="row">
+                <h4>Ailleurs</h4>
+                <ul>
+                    <li><a href="https://github.com/sylvainnizac">GitHub</a></li>
+                </ul>
+            </div>
+        </aside>
 
-    {# Mise en forme de la pagination ici #}
-    {% if is_paginated %}
-        <div class="pagination">
-        {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}">Précédente</a> —
-        {% endif %}
-            Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }} 
-        {% if page_obj.has_next %}
-            — <a href="?page={{ page_obj.next_page_number }}">Suivante</a>
-        {% endif %}
-        </div>
-    {% endif %}
+        <article class="container">
 
-    <h3>Catégories disponibles</h3>
-    <ul>
-    {% for categorie in categories %}
-        <li><a href="{% url "blog_categorie" categorie.id %}">{{ categorie.nom }}</a></li>
-    {% endfor %}
-    </ul>
+            <div class="blog-header">
+                <h1 class="blog-title">The Sylvain's Blog</h1>
+                <p class="lead blog-description">Entre blog et notes de version, suivi croisé de ce site et de mon GitHub.</p>
+            </div>
+
+            {% for article in articles %}
+            <div class="article blog-post">
+                <h3 class="blog-post-title">{{ article.titre }}</h3>
+                <p class="blog-post-meta">Par {{ article.auteur }} le {{ article.date }}<p>
+                <p>{{ article.contenu|truncatewords_html:80 }}</p>
+                <p><a href="{% url 'lire_article' article.id article.slug %}">Lire la suite</a>
+            </div>
+            {% empty %}
+            <p>Aucun article.</p>
+            {% endfor %}
+
+            {# Mise en forme de la pagination ici #}
+            {% if is_paginated %}
+                <div class="pagination">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">Précédente</a> —
+                {% endif %}
+                    Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}
+                {% if page_obj.has_next %}
+                    — <a href="?page={{ page_obj.next_page_number }}">Suivante</a>
+                {% endif %}
+                </div>
+            {% endif %}
+        </article>
+    </section>
 {% endblock %}

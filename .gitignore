@@ -4,10 +4,12 @@ site_perso/__pycache__/
 blog/__pycache__/
 blog/migrations/
 urlshortner/migrations/
+static/bootstrap/
 *.py[cod]
 
 #perso
 .gitignore~
+.idea/
 db.sqlite3
 blog/urls.py~
 blog/views.py~
