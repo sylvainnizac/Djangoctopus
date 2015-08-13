@@ -1,0 +1,18 @@
+/* Global */
+html, body{
+    height: 100%;
+}
+
+.degrade {
+	background-image:linear-gradient(#F8fcff, #FFECB4);
+}
+
+/* content */
+.margnavbar{
+	margin-top: 50px;
+}
+
+/* footer */
+.footer{
+    text-align: center;
+}
