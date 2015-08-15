@@ -18,7 +18,7 @@ site_perso/settings.py~
 blog/templates/blog/date.html~
 *.png
 *.jpg
-
+settings_prod.py
 
 # C extensions
 *.so
