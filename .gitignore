@@ -6,6 +6,7 @@ blog/migrations/
 urlshortner/migrations/
 static/bootstrap/
 *.py[cod]
+*.*~
 
 #perso
 .gitignore~

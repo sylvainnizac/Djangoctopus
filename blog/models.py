@@ -10,7 +10,7 @@ class Article(models.Model):
     auteur = models.CharField(max_length=50)
     contenu = models.TextField(null=True)
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date de parution")
-    categorie = models.ForeignKey('Categorie', default=0)
+    categorie = models.ForeignKey('Categorie', default=1)
     
     def __str__(self):
         """ 
