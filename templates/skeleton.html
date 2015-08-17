@@ -2,13 +2,17 @@
 <html lang="fr">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	
         {% load static %}
         <link rel="stylesheet" href={% static 'css/style.css' %} />
         <link rel="stylesheet" href={% static 'bootstrap/css/bootstrap.min.css' %} />
         <!-- permet l'ajout de styles personnalisés pour chaque élément du site -->
         {% block style %}{% endblock %}
+        
         <title>{% block title %}Mon blog de bidouillages et figurines{% endblock %}</title>
         <!-- affiche une icone avant le nom dans l'onglet -->
         <link rel="icon" href={% static 'img/favicon.ico' %}>
