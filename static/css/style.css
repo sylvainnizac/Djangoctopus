@@ -1,6 +1,13 @@
 /* Global */
-html, body{
-    height: 100%;
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  height: 100%;
+  /*background-color: none;*/
 }
 
 .degrade {
@@ -8,8 +15,11 @@ html, body{
 }
 
 /* content */
-.margnavbar{
+.marg {
+    /* navbar protection */
 	margin-top: 50px;
+	/* footer protection */
+	margin-bottom: 60px;
 }
 
 /* footer */
@@ -20,5 +30,5 @@ html, body{
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
-  padding-top: 20px;
+  /*padding-top: 20px;*/
 }
