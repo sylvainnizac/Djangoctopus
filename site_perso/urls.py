@@ -20,3 +20,8 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls), name="admin"),
     url(r'^blog/', include('blog.urls')),
 ]
+
+handler404 = 'blog.views.my_custom_page_not_found_view'
+handler500 = 'blog.views.my_custom_error_view'
+handler403 = 'blog.views.my_custom_permission_denied_view'
+handler400 = 'blog.views.my_custom_bad_request_view'

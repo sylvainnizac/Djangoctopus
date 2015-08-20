@@ -3,6 +3,15 @@ evolution of the octopus web site, now powered by Django! maybe you will find he
 
 Everything is in progress, many commits incoming!
 
+august 20th 2015
+
+app on line (snizac.ddns.net)
+blog (index + article) operationnal and mobile improvement at 95%
+personnalized error pages in progress
+2 new ideas in dev
+  a new app for a bunch of static pages (CV,...)
+  another app for a photo galery
+
 june 26th 2015
 
 OK, OPC training is finished, back to devellopment
