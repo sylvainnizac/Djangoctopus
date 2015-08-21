@@ -82,3 +82,5 @@ def view_comments(article_id):
     comments = Comment.objects.filter(article = article_id, commentaire_visible=True).order_by('-date')
     
     return comments
+
+
