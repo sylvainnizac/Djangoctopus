@@ -3,6 +3,13 @@ evolution of the octopus web site, now powered by Django! maybe you will find he
 
 Everything is in progress, many commits incoming!
 
+august 21st 2015
+
+the new app st_pages is online.
+It contains my CV and personnalized error pages.
+next step, galery!
+
+
 august 20th 2015
 
 app on line (snizac.ddns.net)
