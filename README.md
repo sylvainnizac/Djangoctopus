@@ -3,6 +3,12 @@ evolution of the octopus web site, now powered by Django! maybe you will find he
 
 Everything is in progress, many commits incoming!
 
+august 22nd 2015
+
+improvement on CV and other pages for mobile
+error pages are not totally working, I don't understand
+galery step 1
+
 august 21st 2015
 
 the new app st_pages is online.
