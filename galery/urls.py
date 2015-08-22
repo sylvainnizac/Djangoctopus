@@ -6,5 +6,3 @@ from blog.views import List_Articles, Single_Article
 urlpatterns = patterns('blog.views',
     url(r'^$', , name="carousel"),
 )
-
-
