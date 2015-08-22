@@ -10,7 +10,7 @@
         {% load static %}
         <link rel="stylesheet" href={% static 'css/style.css' %} />
         <link rel="stylesheet" href={% static 'bootstrap/css/bootstrap.min.css' %} />
-        <!-- permet l'ajout de styles personnalisés pour chaque élément du site -->
+        <!-- permet l'ajout de styles personnalisÃ©s pour chaque Ã©lÃ©ment du site -->
         {% block style %}{% endblock %}
         
         <title>{% block title %}Mon blog de bidouillages et figurines{% endblock %}</title>
@@ -48,11 +48,11 @@
         </nav>
 
         <!-- content -->
+        {% block altcontent %}
         <section id="content" class="marg">
             {% block content %}{% endblock %}
         </section>
-        
-        {% block altcontent %}{% endblock %}
+        {% endblock %}
 
         <!-- foot -->
         <footer class="footer">&copy; Djangoctopus by Sylvain</footer>
