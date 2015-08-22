@@ -1,6 +1,7 @@
 # -*- coding: utf8 -*-
 from django.db import models
 
+
 class Article(models.Model):
     """
     This class defines the table of blog articles.
@@ -24,6 +25,7 @@ class Article(models.Model):
         """
         return self.titre
 
+
 class Categorie(models.Model):
     """
     This class defines the table of categories
@@ -36,6 +38,7 @@ class Categorie(models.Model):
         """
         return self.nom
 
+
 class Comment(models.Model):
     """
     table of comments
@@ -45,10 +48,10 @@ class Comment(models.Model):
     article = models.ForeignKey('Article')
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date du commentaire")
     description = models.TextField(verbose_name="Votre commentaire")
-    commentaire_visible = models.BooleanField(default = True)
-    
+    commentaire_visible = models.BooleanField(default=True)
+
     def __str__(self):
         """
-        this methode is designed to be used for administration and debbuging purpose
+        this method is designed to be used for administration and debbuging purpose
         """
         return self.pseudo
