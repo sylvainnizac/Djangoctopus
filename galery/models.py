@@ -10,7 +10,8 @@ class CarouArt(models.Model):
     titre = models.CharField(max_length=100)
     slug = models.CharField(max_length=100, null=True)
     contenu = models.TextField(null=True)
-    categorie = models.ForeignKey('Faction')
+    illustration = models.ForeignKey('Photo')
+    faction = models.ForeignKey('Faction')
 
     def __str__(self):
         return self.titre
