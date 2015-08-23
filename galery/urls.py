@@ -1,8 +1,8 @@
 __author__ = 'Sylvain'
 # -*- coding: utf8 -*-
 from django.conf.urls import patterns, url
-from blog.views import List_Articles, Single_Article
+from galery.views import Main_carousel
 
 urlpatterns = patterns('blog.views',
-    url(r'^$', , name="carousel"),
+    url(r'^$', Main_carousel.as_view(), name="carousel"),
 )

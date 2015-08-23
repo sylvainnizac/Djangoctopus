@@ -1,0 +1,25 @@
+{% extends "skeleton.html" %}
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href={% static 'css/carousel.css' %} />
+{% endblock %}
+{% block content %}
+    <hr class="featurette-divider">
+
+    {% for article in articles %}
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading"><font color="#4f5c67">{{ article.titre }} </font><span class="text-muted"><font color="#6A747C">{{ article.slug }}</font></span></h2>
+                <p class="lead"><font color="#4f5c67">{{ article.contenu }}</font></p>
+            </div>
+            <div class="col-md-5">
+                <img class="featurette-image img-responsive" src="{{ article.illustration }}" alt="{{ article.titre }}">
+            </div>
+        </div>
+
+    <hr class="featurette-divider">
+
+    {% empty %}
+        <p>Aucun article.</p>
+    {% endfor %}
+{% endblock %}
