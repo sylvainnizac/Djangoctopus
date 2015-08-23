@@ -9,6 +9,7 @@ class CarouArt(models.Model):
     """
     titre = models.CharField(max_length=100)
     slug = models.CharField(max_length=100, null=True)
+    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date de parution")
     contenu = models.TextField(null=True)
     illustration = models.ForeignKey('Photo')
     faction = models.ForeignKey('Faction')
@@ -24,7 +25,7 @@ class Faction(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
-        return self.Name
+        return self.name
 
 
 class Sectorial(models.Model):
@@ -35,7 +36,7 @@ class Sectorial(models.Model):
     factions = models.ForeignKey('Faction')
 
     def __str__(self):
-        return self.Name
+        return self.name
 
 
 class Fig(models.Model):
@@ -52,17 +53,17 @@ class Fig(models.Model):
     prime_Camo = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.Name
+        return self.name
 
 
 class Photo(models.Model):
     """
     This class define the list of available photos
     """
-    pic_Path = models.FilePathField(path="/home/sylvain/site-web/data/img", match="*.*", recursive=True)
+    pic_path = models.FilePathField(path="/home/sylvain/site-web/data/img", match="*.*", recursive=True)
     faction = models.ForeignKey('Faction', default=1)
     sectorial = models.ForeignKey('Sectorial', null=True)
     fig = models.ForeignKey('Fig')
 
     def __str__(self):
-        return self.PicPath
+        return self.picpath
