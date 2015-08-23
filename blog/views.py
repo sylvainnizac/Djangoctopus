@@ -4,7 +4,6 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
 #generic views are ready to use standards views
 from django.views.generic import ListView, DetailView
-from datetime import datetime
 from blog.models import Article, Categorie, Comment
 from blog.forms import NewCom
 
