@@ -3,6 +3,11 @@ evolution of the octopus web site, now powered by Django! maybe you will find he
 
 Everything is in progress, many commits incoming!
 
+august 23rd 2015
+
+first page from galery + models + admin
+can't test anything...
+
 august 22nd 2015
 
 improvement on CV and other pages for mobile
