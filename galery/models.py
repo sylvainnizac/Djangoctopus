@@ -60,10 +60,36 @@ class Photo(models.Model):
     """
     This class define the list of available photos
     """
-    pic_path = models.FilePathField(path="/home/sylvain/site-web/data/img", match="*.*", recursive=True)
+    pic_path = models.FilePathField(path="/home/sylvain/site-web/data/img/galerie", match="*.*", recursive=True)
     faction = models.ForeignKey('Faction', default=1)
     sectorial = models.ForeignKey('Sectorial', null=True)
     fig = models.ForeignKey('Fig')
 
     def __str__(self):
         return self.picpath
+
+
+class AutreIllu(models.Model):
+    """
+    This class defines the list of other illustrations
+    """
+    pic_path = models.FilePathField(path="/home/sylvain/site-web/data/img/illus", match="*.*", recursive=True)
+    in_carousel = models.BooleanField(default=False)
+    faction = models.ForeignKey('Faction', default=1)
+
+    def __str__(self):
+        return self.picpath
+
+
+class Logo(models.Model):
+    """
+    This class defines the list of logos
+    """
+    logo_path = models.FilePathField(path="/home/sylvain/site-web/data/img/logos", match="*.*", recursive=True)
+    display_carousel = models.BooleanField(default=False)
+    faction = models.ForeignKey('Faction')
+    sectorial = models.ForeignKey('Sectorial', null=True)
+    citation = models.TextField(null=True)
+
+    def __str__(self):
+        return self.logo_path

@@ -4,22 +4,92 @@
     <link rel="stylesheet" href={% static 'css/carousel.css' %} />
 {% endblock %}
 {% block content %}
-    <hr class="featurette-divider">
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide margnavbar" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+
+      <div class="carousel-inner" role="listbox">
+        {% for illu in illus %}
+          {% if forloop.counter0 == 0 %}
+        <div class="item active">
+          {% else %}
+        <div class="item">
+          {% endif %}
+          <img src="{{ illu.pic_path }}" alt="Image {{ illu.faction }}">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>{{ illu.faction }}</h1>
+              <p>Not Yet</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Voir la galerie</a></p>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        {% endfor %}
+      </div>
+
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+          {% for logo in logos %}
+        <div class="col-lg-4">
+          <img class="img-circle" src="{{ logo.logo_path }}" alt="{{ logo.faction }}" style="width: 140px; height: 140px;">
+          <h2>{{ logo.faction }}</h2>
+          <p>{{ logo.citation }}</p>
+          <p><a class="btn btn-default" href="#" role="button">Voir les figurines</a></p>
+        </div><!-- /.col-lg-4 -->
+          {% endfor %}
+      </div><!-- /.row -->
+
+      <!-- START THE FEATURETTES -->
+
+        <hr class="featurette-divider">
 
     {% for article in articles %}
         <div class="row featurette">
+            {% if (forloop.counter % 2) != 0 %}
+            <div class="col-md-5">
+                <img class="featurette-image img-responsive" src="{{ article.illustration }}" alt="{{ article.titre }}">
+            </div>
+            {% endif %}
             <div class="col-md-7">
                 <h2 class="featurette-heading"><font color="#4f5c67">{{ article.titre }} </font><span class="text-muted"><font color="#6A747C">{{ article.slug }}</font></span></h2>
                 <p class="lead"><font color="#4f5c67">{{ article.contenu }}</font></p>
             </div>
+            {% if (forloop.counter % 2) == 0 %}
             <div class="col-md-5">
                 <img class="featurette-image img-responsive" src="{{ article.illustration }}" alt="{{ article.titre }}">
             </div>
+            {% endif %}
         </div>
 
-    <hr class="featurette-divider">
+        <hr class="featurette-divider">
 
     {% empty %}
         <p>Aucun article.</p>
     {% endfor %}
+
+    </div><!-- /.container marketing -->
 {% endblock %}
