@@ -15,11 +15,13 @@ class ArticleAdmin(admin.ModelAdmin):
     fieldsets = (
         # Fieldset 1 : meta-info (titre, auteur…)
        ('Général',
-       {'fields': ('titre', 'slug', 'auteur', 'categorie'), }),
+       {'fields': ('titre', 'slug', 'auteur', 'categorie')
+       }),
         # Fieldset 2 : contenu de l'article
         ('Contenu de l\'article',
         { 'description': 'Le formulaire accepte les balises HTML. Utilisez-les à bon escient !',
-        'fields': ('contenu', )}),
+        'fields': ('contenu', )
+        }),
     )
     
     def apercu_contenu(self, article):
