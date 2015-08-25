@@ -46,7 +46,7 @@ class Fig(models.Model):
     """
     name = models.CharField(max_length=100, unique=True)
     faction = models.ForeignKey('Faction', default=1)
-    sectorial = models.ForeignKey('Sectorial', null=True)
+    sectorial = models.ForeignKey('Sectorial')
     prime_Hacker = models.BooleanField(default=False)
     prime_Airborn = models.BooleanField(default=False)
     prime_Medic = models.BooleanField(default=False)
@@ -61,36 +61,48 @@ class Photo(models.Model):
     """
     This class define the list of available photos
     """
-    pic_path = models.FilePathField(path="/home/sylvain/site-web/data/img/galerie", recursive=True)
+    pic_path = models.FilePathField(path="/var/www/public/data/img/galerie", recursive=True)
     faction = models.ForeignKey('Faction', default=1)
-    sectorial = models.ForeignKey('Sectorial', null=True)
+    sectorial = models.ForeignKey('Sectorial')
     fig = models.ForeignKey('Fig')
 
     def __str__(self):
-        return self.pic_path
+        shpath = self.pic_path
+        shtab = shpath.split("/")
+        nshpath = "/" + "/".join(shtab[3:])
+
+        return nshpath
 
 
 class AutreIllu(models.Model):
     """
     This class defines the list of other illustrations
     """
-    pic_path = models.FilePathField(path="/home/sylvain/site-web/data/img/illus", recursive=True)
+    pic_path = models.FilePathField(path="/var/www/public/data/img/illus", recursive=True)
     in_carousel = models.BooleanField(default=False)
     faction = models.ForeignKey('Faction', default=1)
 
     def __str__(self):
-        return self.pic_path
+        shpath = self.pic_path
+        shtab = shpath.split("/")
+        nshpath = "/" + "/".join(shtab[3:])
+
+        return nshpath
 
 
 class Logo(models.Model):
     """
     This class defines the list of logos
     """
-    logo_path = models.FilePathField(path="/home/sylvain/site-web/data/img/logos", recursive=True)
+    logo_path = models.FilePathField(path="/var/www/public/data/img/logos", recursive=True)
     display_carousel = models.BooleanField(default=False)
     faction = models.ForeignKey('Faction')
-    sectorial = models.ForeignKey('Sectorial', null=True)
+    sectorial = models.ForeignKey('Sectorial')
     citation = models.TextField(null=True)
 
     def __str__(self):
-        return self.logo_path
+        shpath = self.logo_path
+        shtab = shpath.split("/")
+        nshpath = "/" + "/".join(shtab[3:])
+
+        return nshpath

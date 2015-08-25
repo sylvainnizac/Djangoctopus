@@ -21,7 +21,7 @@
           {% else %}
         <div class="item">
           {% endif %}
-          <img src="{{ illu.pic_path }}" alt="Image {{ illu.faction }}">
+          <img src="{{ illu }}" alt="Image {{ illu.faction }}">
           <div class="container">
             <div class="carousel-caption">
               <h1>{{ illu.faction }}</h1>
@@ -55,7 +55,7 @@
       <div class="row">
           {% for logo in logos %}
         <div class="col-lg-4">
-          <img class="img-circle" src="{{ logo.logo_path }}" alt="{{ logo.faction }}" style="width: 140px; height: 140px;">
+          <img class="img-circle" src="{{ logo }}" alt="{{ logo.faction }}" style="width: 140px; height: 140px;">
           <h2>{{ logo.faction }}</h2>
           <p>{{ logo.citation }}</p>
           <p><a class="btn btn-default" href="#" role="button">Voir les figurines</a></p>

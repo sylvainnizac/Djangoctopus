@@ -4,7 +4,7 @@ from galery.models import Faction, Sectorial, Fig, Photo, CarouArt, AutreIllu, L
 
 
 class CarouArtAdmin(admin.ModelAdmin):
-    list_display   = ('titre', 'slug', 'contenu', 'illustration', 'faction', 'date')
+    list_display   = ('titre', 'slug', 'apercu_contenu', 'illustration', 'faction', 'date')
     list_filter    = ('faction', 'date')
     date_hierarchy = 'date'
     ordering       = ('-date', )
@@ -33,7 +33,7 @@ class CarouArtAdmin(admin.ModelAdmin):
 
 
 class LogoAdmin(admin.ModelAdmin):
-    list_display   = ('logo_path', 'faction', 'sectorial', 'display_carousel', 'citation')
+    list_display   = ('logo_path', 'faction', 'sectorial', 'display_carousel', 'apercu_citation')
     list_filter    = ('faction',)
     ordering       = ('faction', )
 
@@ -52,7 +52,7 @@ class LogoAdmin(admin.ModelAdmin):
         """
         text = logo.citation[0:40]
         if len(logo.citation) > 40:
-            return '%s…' % text
+            return '%s...' % text
         else:
             return text
 

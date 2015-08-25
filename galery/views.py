@@ -12,7 +12,11 @@ class Main_carousel(ListView):
     model=CarouArt
     context_object_name="articles"
     template_name="galery/carousel.html"
-    paginate_by = 5
+
+    def get_queryset(self):
+        """modify standard data recovery"""
+        temp = CarouArt.objects.all().order_by('-date')
+        return temp
 
     def get_context_data(self, **kwargs):
         """recover and modify the context data to add the list of categories"""
