@@ -3,6 +3,6 @@ __author__ = 'Sylvain'
 from django.conf.urls import patterns, url
 from galery.views import Main_carousel
 
-urlpatterns = patterns('blog.views',
+urlpatterns = patterns('galery.views',
     url(r'^$', Main_carousel.as_view(), name="carousel"),
 )
