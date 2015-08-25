@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 from django.db import models
 
 # Create your models here.
@@ -60,32 +61,32 @@ class Photo(models.Model):
     """
     This class define the list of available photos
     """
-    pic_path = models.FilePathField(path="/home/sylvain/site-web/data/img/galerie", match="*.*", recursive=True)
+    pic_path = models.FilePathField(path="/home/sylvain/site-web/data/img/galerie", recursive=True)
     faction = models.ForeignKey('Faction', default=1)
     sectorial = models.ForeignKey('Sectorial', null=True)
     fig = models.ForeignKey('Fig')
 
     def __str__(self):
-        return self.picpath
+        return self.pic_path
 
 
 class AutreIllu(models.Model):
     """
     This class defines the list of other illustrations
     """
-    pic_path = models.FilePathField(path="/home/sylvain/site-web/data/img/illus", match="*.*", recursive=True)
+    pic_path = models.FilePathField(path="/home/sylvain/site-web/data/img/illus", recursive=True)
     in_carousel = models.BooleanField(default=False)
     faction = models.ForeignKey('Faction', default=1)
 
     def __str__(self):
-        return self.picpath
+        return self.pic_path
 
 
 class Logo(models.Model):
     """
     This class defines the list of logos
     """
-    logo_path = models.FilePathField(path="/home/sylvain/site-web/data/img/logos", match="*.*", recursive=True)
+    logo_path = models.FilePathField(path="/home/sylvain/site-web/data/img/logos", recursive=True)
     display_carousel = models.BooleanField(default=False)
     faction = models.ForeignKey('Faction')
     sectorial = models.ForeignKey('Sectorial', null=True)

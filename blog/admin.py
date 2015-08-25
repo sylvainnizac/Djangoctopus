@@ -31,7 +31,7 @@ class ArticleAdmin(admin.ModelAdmin):
         """
         text = article.contenu[0:40]
         if len(article.contenu) > 40:
-            return '%s…' % text
+            return '%s...' % text
         else:
             return text
 
@@ -66,7 +66,7 @@ class CommentsAdmin(admin.ModelAdmin):
         """
         text = commentaire.description[0:40]
         if len(commentaire.description) > 40:
-            return '%s…' % text
+            return '%s...' % text
         else:
             return text
 

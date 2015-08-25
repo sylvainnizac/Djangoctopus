@@ -24,7 +24,7 @@ class CarouArtAdmin(admin.ModelAdmin):
         """
         text = article.contenu[0:40]
         if len(article.contenu) > 40:
-            return '%s…' % text
+            return '%s...' % text
         else:
             return text
 

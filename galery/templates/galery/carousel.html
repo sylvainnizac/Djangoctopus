@@ -69,7 +69,7 @@
 
     {% for article in articles %}
         <div class="row featurette">
-            {% if (forloop.counter % 2) != 0 %}
+            {% if forloop.counter0|divisibleby:"2" %}
             <div class="col-md-5">
                 <img class="featurette-image img-responsive" src="{{ article.illustration }}" alt="{{ article.titre }}">
             </div>
@@ -78,7 +78,7 @@
                 <h2 class="featurette-heading"><font color="#4f5c67">{{ article.titre }} </font><span class="text-muted"><font color="#6A747C">{{ article.slug }}</font></span></h2>
                 <p class="lead"><font color="#4f5c67">{{ article.contenu }}</font></p>
             </div>
-            {% if (forloop.counter % 2) == 0 %}
+            {% if forloop.counter|divisibleby:"2" %}
             <div class="col-md-5">
                 <img class="featurette-image img-responsive" src="{{ article.illustration }}" alt="{{ article.titre }}">
             </div>
