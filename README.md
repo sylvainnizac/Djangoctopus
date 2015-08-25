@@ -3,6 +3,11 @@ evolution of the octopus web site, now powered by Django! maybe you will find he
 
 Everything is in progress, many commits incoming!
 
+august 26th 2015
+
+the galery is finally fonctionnal, but ugly...
+next step style!
+
 august 23rd 2015
 
 first page from galery + models + admin
