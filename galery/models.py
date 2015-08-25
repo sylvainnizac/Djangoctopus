@@ -78,7 +78,7 @@ class AutreIllu(models.Model):
     faction = models.ForeignKey('Faction', default=1)
 
     def __str__(self):
-        return self.picpath
+        return self.pic_path
 
 
 class Logo(models.Model):
