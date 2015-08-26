@@ -19,6 +19,7 @@
 }
 .carousel-inner > .item > img {
   /*position: absolute;*/
+  margin: 0 auto;
   top: 0;
   /*left: 0;*/
   /*min-width: 100%;*/
