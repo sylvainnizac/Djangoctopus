@@ -3,7 +3,6 @@ from django.db import models
 
 # Create your models here.
 
-
 class CarouArt(models.Model):
     """
     This class defines the table of carousel articles.
@@ -61,7 +60,7 @@ class Photo(models.Model):
     """
     This class define the list of available photos
     """
-    pic_path = models.FilePathField(path="/var/www/public/data/img/galerie", recursive=True)
+    pic_path = models.FilePathField(path="/var/www/public/data/img/galerie", recursive=True, unique=True)
     faction = models.ForeignKey('Faction', default=1)
     sectorial = models.ForeignKey('Sectorial')
     fig = models.ForeignKey('Fig')
@@ -79,7 +78,7 @@ class AutreIllu(models.Model):
     """
     This class defines the list of other illustrations
     """
-    pic_path = models.FilePathField(path="/var/www/public/data/img/illus", recursive=True)
+    pic_path = models.FilePathField(path="/var/www/public/data/img/illus", recursive=True, unique=True)
     in_carousel = models.BooleanField(default=False)
     faction = models.ForeignKey('Faction', default=1)
 
@@ -96,7 +95,7 @@ class Logo(models.Model):
     """
     This class defines the list of logos
     """
-    logo_path = models.FilePathField(path="/var/www/public/data/img/logos", recursive=True)
+    logo_path = models.FilePathField(path="/var/www/public/data/img/logos", recursive=True, unique=True)
     display_carousel = models.BooleanField(default=False)
     faction = models.ForeignKey('Faction')
     sectorial = models.ForeignKey('Sectorial')
