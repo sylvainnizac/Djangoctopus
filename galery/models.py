@@ -67,6 +67,7 @@ class Photo(models.Model):
     fig = models.ForeignKey('Fig')
 
     def __str__(self):
+        """Shorten the path for <img src= >"""
         shpath = self.pic_path
         shtab = shpath.split("/")
         nshpath = "/" + "/".join(shtab[3:])
@@ -83,6 +84,7 @@ class AutreIllu(models.Model):
     faction = models.ForeignKey('Faction', default=1)
 
     def __str__(self):
+        """Shorten the path for <img src= >"""
         shpath = self.pic_path
         shtab = shpath.split("/")
         nshpath = "/" + "/".join(shtab[3:])
@@ -101,6 +103,7 @@ class Logo(models.Model):
     citation = models.TextField(null=True)
 
     def __str__(self):
+        """Shorten the path for <img src= >"""
         shpath = self.logo_path
         shtab = shpath.split("/")
         nshpath = "/" + "/".join(shtab[3:])
