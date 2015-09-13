@@ -27,9 +27,6 @@ def snippet_list(request, format=None):
 
         return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
-def snip_det_temp(request, pk):
-     return render(request,'snippets/snipdetail.html')
-
 @api_view(['GET', 'PUT', 'DELETE']) # only allows GET, PUT and DELETE request
 def snippet_detail(request, pk, format=None):
     """

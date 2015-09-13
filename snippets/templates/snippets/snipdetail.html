@@ -1,18 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    {% load static %}
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-    <title></title>
-</head>
-<body ng-app="Snipdet">
-    <div ng-controller="SnipdetCtrl">
+{% extends "snippets/snipaccueil.html" %}
 
-        <h3>[[ post.id ]] - [[ post.title ]]</h3>
-        <author>[[ post.code ]]</author>
+{% block snippets %}
+    <section id="content" class="marg container" ng-app="SnipDet">
 
-    </div>
-<script src="{% static "js/angusnip.js" %}"></script>
-</body>
-</html>
+        <article id="All" ng-controller="SnipDetCtrl">
+            <h3><span ng-bind="snip.id"></span> - <span ng-bind="snip.title"></span></h3>
+            <p><span ng-bind="snip.description | newlines"></span></p>
+            <aside class="codeblock">
+                <code><span ng-bind-Html="snip.code | newlines"></span></code>
+            </aside>
+        </article>
+        <a href="{% url 'snipaccueil' %}">Back</a>
+    </section>
+{% endblock %}
+
+{% block angular %}{% load static %}<script src="{% static "js/snipdetail.js" %}"></script>{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "skeleton.html" %}
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href={% static 'css/snippet.css' %} />
+{% endblock %}
+
+{% block altcontent %}
+{% block snippets %}
+    <section id="content" class="marg container" ng-app="SnipAccueil">
+
+        <article id="All" ng-controller="SnipAllCtrl">
+            <div ng-repeat="snip in snips">
+            <h3><a href="{% url 'snipaccueil' %}[[ snip.id ]]"><span ng-bind="snip.id"></span> - <span ng-bind="snip.title"></span></a></h3>
+            <aside><span ng-bind="snip.description | limitTo:desclimit" ng-mouseenter="shall();" ng-mouseleave="hiall();"></span></aside>
+            </div>
+        </article>
+    </section>
+{% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-sanitize.min.js"></script>
+    {% block angular %}<script src="{% static "js/snipaccueil.js" %}"></script>{% endblock %}
+{% endblock %}

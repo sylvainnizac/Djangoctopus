@@ -18,6 +18,7 @@ class Snippet(models.Model):
     """
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     title = models.CharField(max_length=100, )
+    description = models.TextField()
     code = models.TextField()
     linenos = models.BooleanField(default=False) # affichage numéro de ligne, à voir pour la suite
     language = models.CharField(choices=LANGUAGE_CHOICES, default='python', max_length=100)
