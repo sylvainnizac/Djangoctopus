@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <title></title>
+</head>
+<body ng-app="Snipdet">
+    <div ng-controller="SnipdetCtrl">
+
+        <h3>[[ post.id ]] - [[ post.title ]]</h3>
+        <author>[[ post.code ]]</author>
+
+    </div>
+<script src="{% static "js/angusnip.js" %}"></script>
+</body>
+</html>
