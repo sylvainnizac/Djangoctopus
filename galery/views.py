@@ -25,3 +25,42 @@ class Main_carousel(ListView):
         context['illus'] = AutreIllu.objects.filter(in_carousel=True)
         context['logos'] = Logo.objects.filter(display_carousel=True)
         return context
+
+class Main_galery(ListView):
+    """
+    This class gathered all data for galery side bar
+    """
+    model=Faction
+    context_object_name="factions"
+    template_name="galery/galery.html"
+    
+    def get_queryset(self):
+        """modify standard data recovery"""
+        return Faction.objects.all().order_by('name')
+
+    def get_context_data(self, **kwargs):
+        """add sectorial and figs data"""
+        factions = context['factions']
+        total = []
+        for f in factions:
+            temp = (f, )
+            sector = Sectorial.objects.filter(faction = f).order_by('name').values('name')
+            for s in sector:
+                figus = Fig.objects.filter(sectorial = s).order_by('name').values('name')
+                temp += (s, figus)
+            total += temp
+        context['sidemenu'] = total
+        return context
+
+def pics_list(request, faction = None, secto = None):
+    """
+    List all pictures
+    """
+    if faction == None && secto == None:
+        pics = Photo.objects.all()
+        serializer = PhotoSerializer(pics, many = True)
+        return Response(serializer.data)
+    else:
+        pics = Photo.objects.filter(faction = faction, sectorial = secto)
+        serializer = PhotoSerializer(pics, many = True)
+        return Response(serializer.data)
