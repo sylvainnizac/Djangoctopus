@@ -1,0 +1,8 @@
+.panneau_lat
+{
+    height: 100vh;
+    vertical-align: top;
+    background-color: silver;
+    border-radius: 10px / 5px;
+    padding-top: 50px;
+}

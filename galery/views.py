@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.views.generic import ListView
-from galery.models import CarouArt, AutreIllu, Logo
+from galery.models import CarouArt, AutreIllu, Logo, Faction, Sectorial, Photo, Fig
 
 
 class Main_carousel(ListView):
@@ -40,22 +40,23 @@ class Main_galery(ListView):
 
     def get_context_data(self, **kwargs):
         """add sectorial and figs data"""
+        context = super(Main_galery, self).get_context_data(**kwargs)
         factions = context['factions']
         total = []
         for f in factions:
-            temp = (f, )
-            sector = Sectorial.objects.filter(faction = f).order_by('name').values('name')
+            temp = [f, ]
+            sector = Sectorial.objects.filter(factions = f).order_by('name')
             for s in sector:
-                figus = Fig.objects.filter(sectorial = s).order_by('name').values('name')
-                temp += (s, figus)
-            total += temp
-        context['sidemenu'] = total
+                figus = Fig.objects.filter(sectorial = s).order_by('name')
+                temp.append([s, figus])
+            total.append(temp)
+        context['sidemenus'] = total
         return context
-
+"""
 def pics_list(request, faction = None, secto = None):
-    """
+
     List all pictures
-    """
+
     if faction == None && secto == None:
         pics = Photo.objects.all()
         serializer = PhotoSerializer(pics, many = True)
@@ -64,3 +65,4 @@ def pics_list(request, faction = None, secto = None):
         pics = Photo.objects.filter(faction = faction, sectorial = secto)
         serializer = PhotoSerializer(pics, many = True)
         return Response(serializer.data)
+"""

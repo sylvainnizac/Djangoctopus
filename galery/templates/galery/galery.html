@@ -1,0 +1,47 @@
+{% extends "skeleton.html" %}
+
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href={% static 'css/galery.css' %} />
+{% endblock %}
+
+{% block content %}
+<section class="row">
+    <aside class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 panneau_lat">
+        <p>Figurines</p>
+    <ul>
+    {% for sidemenu in sidemenus %}
+    {% for fac in sidemenu %}
+        {% if forloop.counter0 == 0 %}
+        <li>{{ fac }}</li>
+        {% else %}
+        {% for sect in fac %}
+        {% if forloop.counter0 == 0 %}
+        <ul>
+            <li>{{ sect }}</li>
+        {% else %}
+            <ul>
+                {% for fig in sect %}
+                <li>{{ fig }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endfor %}
+    {% endfor %}
+    </ul>
+    </aside>
+
+
+    <article class="container">
+        ici seront les photos
+    </article>
+
+</section>
+
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}
