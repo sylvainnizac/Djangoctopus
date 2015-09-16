@@ -3,6 +3,14 @@ evolution of the octopus web site, now powered by Django! maybe you will find he
 
 Everything is in progress, many commits incoming!
 
+september 15th 2015
+
+first step for galery 2nd page. Objective is to deliver pictures via angular including filters
+
+september 13th 2015
+
+some tests about angular js, snippets agregation app
+
 august 26th 2015
 
 the galery is finally fonctionnal, but ugly...
@@ -24,7 +32,6 @@ august 21st 2015
 the new app st_pages is online.
 It contains my CV and personnalized error pages.
 next step, galery!
-
 
 august 20th 2015
 
