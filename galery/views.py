@@ -3,6 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.views.generic import ListView
 from galery.models import CarouArt, AutreIllu, Logo, Faction, Sectorial, Photo, Fig
+from galery.serializer import PhotoSerializer
 
 
 class Main_carousel(ListView):
@@ -52,17 +53,24 @@ class Main_galery(ListView):
             total.append(temp)
         context['sidemenus'] = total
         return context
-"""
-def pics_list(request, faction = None, secto = None):
 
+def pics_list(request, faction = None, secto = None, fig = None):
+    """
     List all pictures
-
-    if faction == None && secto == None:
+    """
+    if faction == None && secto == None && fig == None:
         pics = Photo.objects.all()
         serializer = PhotoSerializer(pics, many = True)
         return Response(serializer.data)
-    else:
-        pics = Photo.objects.filter(faction = faction, sectorial = secto)
+    elif faction != None:
+        pics = Photo.objects.filter(faction = faction)
         serializer = PhotoSerializer(pics, many = True)
         return Response(serializer.data)
-"""
+    elif secto != None:
+        pics = Photo.objects.filter(sectorial = secto)
+        serializer = PhotoSerializer(pics, many = True)
+        return Response(serializer.data)
+    elif fig != None:
+        pics = Photo.objects.filter(fig = fig)
+        serializer = PhotoSerializer(pics, many = True)
+        return Response(serializer.data)
