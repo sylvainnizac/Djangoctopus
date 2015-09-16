@@ -8,6 +8,9 @@ class PhotoSerializer(serializers.ModelSerializer):
     standard serialization class, like for forms
     create() and update() methods already impemented
     """
+
+    pic_path = serializers.URLField()
+
     class Meta:
         model = Photo
-        fields =('pic_path', )
+        fields = ('pic_path', )

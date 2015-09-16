@@ -1,7 +1,7 @@
-from django.shortcuts import render
-
 # Create your views here.
 from django.views.generic import ListView
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from galery.models import CarouArt, AutreIllu, Logo, Faction, Sectorial, Photo, Fig
 from galery.serializer import PhotoSerializer
 
@@ -54,11 +54,13 @@ class Main_galery(ListView):
         context['sidemenus'] = total
         return context
 
+@api_view(['GET', ])
 def pics_list(request, faction = None, secto = None, fig = None):
     """
     List all pictures
     """
-    if faction == None && secto == None && fig == None:
+
+    if faction == None and secto == None and fig == None:
         pics = Photo.objects.all()
         serializer = PhotoSerializer(pics, many = True)
         return Response(serializer.data)
@@ -74,3 +76,4 @@ def pics_list(request, faction = None, secto = None, fig = None):
         pics = Photo.objects.filter(fig = fig)
         serializer = PhotoSerializer(pics, many = True)
         return Response(serializer.data)
+

@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^blog/', include('blog.urls')),
     url(r'^st/', include('st_pages.urls')),
     url(r'^galery/', include('galery.urls')),
-    url(r'^snippets/', include('snippets.urls')),
+    # url(r'^snippets/', include('snippets.urls')),
 ]
 
 #handler404 = 'st_pages.views.my_custom_page_not_found_view'

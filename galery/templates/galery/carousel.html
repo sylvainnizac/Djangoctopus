@@ -68,7 +68,7 @@
 
     {% for article in articles %}
         <div class="row featurette">
-
+            {% if forloop.counter0|divisibleby:"2" %}
             <div class="col-md-5">
                 <img class="featurette-image img-responsive" src="{{ article.illustration }}" alt="{{ article.titre }}">
             </div>

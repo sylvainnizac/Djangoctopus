@@ -35,8 +35,14 @@
     </aside>
 
 
-    <article class="container">
-        ici seront les photos
+    <article class="container" ng-app="PhotoGalery">
+
+        <article ng-controller="PhotoAllCtrl">
+            <div ng-repeat="photo in photos">
+                <img ng-src="[[ pic_path ]]" alt="photo"/>[[ photo.pic_path ]]
+            </div>
+        </article>
+
     </article>
 
 </section>
@@ -44,4 +50,6 @@
 {% endblock %}
 
 {% block javascript %}
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="{% static "js/galery.js" %}"></script>
 {% endblock %}
