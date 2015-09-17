@@ -6,3 +6,8 @@
     border-radius: 10px / 5px;
     padding-top: 50px;
 }
+
+.miniature
+{
+    max-height: 255px;
+}
