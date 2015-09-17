@@ -3,6 +3,12 @@ evolution of the octopus web site, now powered by Django! maybe you will find he
 
 Everything is in progress, many commits incoming!
 
+september 18th 2015
+
+picture delivery API fully functionnal with all pictures
+next step a bit of style
+then filter the query
+
 september 15th 2015
 
 first step for galery 2nd page. Objective is to deliver pictures via angular including filters
