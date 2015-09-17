@@ -1,4 +1,4 @@
-var App = angular.module('PhotoGalery', []);
+var App = angular.module('PhotoGalery', ['filters']);
 
 App.config(function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
@@ -11,3 +11,15 @@ App.controller('PhotoAllCtrl', function($scope, $http) {
             $scope.photos = res.data;
         });
 });
+
+angular.module('filters', []).
+    filter('truncate', function () {
+        return function (text, start, end) {
+
+            if (isNaN(end))
+                String(text).substring(start);
+
+            return String(text).substring(start, end);
+
+        };
+    });

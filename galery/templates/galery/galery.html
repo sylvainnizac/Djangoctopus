@@ -38,8 +38,12 @@
     <article class="container" ng-app="PhotoGalery">
 
         <article ng-controller="PhotoAllCtrl">
-            <div ng-repeat="photo in photos">
-                <img ng-src="[[ pic_path ]]" alt="photo"/>[[ photo.pic_path ]]
+            <div ng-repeat="photo in photos" class="col-md-4 thumb">
+
+                <a class="thumbnail" href="#">
+                    <img class="img-responsive" ng-src="[[ photo.pic_path | truncate:8 ]]" alt="Generic placeholder image">
+                </a>
+
             </div>
         </article>
 
