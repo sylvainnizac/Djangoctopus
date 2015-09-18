@@ -3,6 +3,7 @@
 {% block style %}
     {% load static %}
     <link rel="stylesheet" href={% static 'css/galery.css' %} />
+    <link rel="stylesheet" href={% static 'lightbox/dist/css/lightbox.css' %} />
 {% endblock %}
 
 {% block content %}
@@ -40,8 +41,8 @@
         <article ng-controller="PhotoAllCtrl">
             <div ng-repeat="photo in photos" class="col-md-4 thumb">
 
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive miniature" ng-src="[[ photo.pic_path | truncate:8 ]]" alt="Generic placeholder image">
+                <a data-lightbox="main" class="thumbnail" ng-href="[[ photo.pic_path | truncate:8 ]]">
+                    <img class="img-responsive miniature" ng-src="[[ photo.pic_path | truncate:8 ]]" alt="Generic placeholder image" />
                 </a>
 
             </div>
@@ -53,7 +54,10 @@
 
 {% endblock %}
 
+{% block footer %}using lokesh <a href="https://github.com/lokesh/lightbox2">lightbox2</a>{% endblock %}
+
 {% block javascript %}
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 <script src="{% static "js/galery.js" %}"></script>
+<script src="{% static "lightbox/dist/js/lightbox.js" %}"></script>
 {% endblock %}
