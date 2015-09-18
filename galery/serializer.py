@@ -10,7 +10,8 @@ class PhotoSerializer(serializers.ModelSerializer):
     """
 
     pic_path = serializers.URLField()
+    fig = serializers.StringRelatedField()
 
     class Meta:
         model = Photo
-        fields = ('pic_path', )
+        fields = ('pic_path', 'fig')

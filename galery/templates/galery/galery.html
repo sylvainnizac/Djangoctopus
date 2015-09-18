@@ -14,16 +14,16 @@
     {% for sidemenu in sidemenus %}
     {% for fac in sidemenu %}
         {% if forloop.counter0 == 0 %}
-        <li>{{ fac }}</li>
+        <li class="faction"><a href="">{{ fac }}</a></li>
         {% else %}
         {% for sect in fac %}
         {% if forloop.counter0 == 0 %}
         <ul>
-            <li>{{ sect }}</li>
+            <li class="sectorielle">{{ sect }}</li>
         {% else %}
             <ul>
                 {% for fig in sect %}
-                <li>{{ fig }}</li>
+                <li class="figurine" >{{ fig }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
@@ -41,7 +41,7 @@
         <article ng-controller="PhotoAllCtrl">
             <div ng-repeat="photo in photos" class="col-md-4 thumb">
 
-                <a data-lightbox="main" class="thumbnail" ng-href="[[ photo.pic_path | truncate:8 ]]">
+                <a data-lightbox="main" data-title="[[ photo.fig ]]" class="thumbnail" ng-href="[[ photo.pic_path | truncate:8 ]]">
                     <img class="img-responsive miniature" ng-src="[[ photo.pic_path | truncate:8 ]]" alt="Generic placeholder image" />
                 </a>
 

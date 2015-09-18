@@ -11,3 +11,35 @@
 {
     max-height: 255px;
 }
+
+ul
+{
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.faction
+{
+    padding-left: 1em;
+    text-indent: -1em;
+    margin-top: 2em;
+}
+
+.sectorielle
+{
+    padding-left: 2em;
+    text-indent: -1em;
+    margin-top: 1em;
+}
+
+.figurine
+{
+    padding-left: 3em;
+    text-indent: -1em;
+}
+
+.figurine:before {
+  content: "*";
+  padding-right: 5px;
+}
