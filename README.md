@@ -5,13 +5,15 @@ Everything is in progress, many commits incoming!
 
 september 18th 2015
 
-picture delivery API fully functionnal with all pictures
-next step a bit of style
-then filter the query
+  picture delivery API fully functionnal with all pictures<br>
+  next step a bit of style<br>
+  then filter the query<br>
+  Lokesh's Lightbox (https://github.com/lokesh/lightbox2) now implemented
 
 september 15th 2015
 
-first step for galery 2nd page. Objective is to deliver pictures via angular including filters
+first step for galery 2nd page.<br>
+Objective is to deliver pictures via angular including filters
 
 september 13th 2015
 
@@ -19,37 +21,37 @@ some tests about angular js, snippets agregation app
 
 august 26th 2015
 
-the galery is finally fonctionnal, but ugly...
+the galery is finally fonctionnal, but ugly...<br>
 next step style!
 
 august 23rd 2015
 
-first page from galery + models + admin
+first page from galery + models + admin<br>
 can't test anything...
 
 august 22nd 2015
 
-improvement on CV and other pages for mobile
-error pages are not totally working, I don't understand
+improvement on CV and other pages for mobile<br>
+error pages are not totally working, I don't understand<br>
 galery step 1
 
 august 21st 2015
 
-the new app st_pages is online.
-It contains my CV and personnalized error pages.
+the new app st_pages is online.<br>
+It contains my CV and personnalized error pages.<br>
 next step, galery!
 
 august 20th 2015
 
-app on line (snizac.ddns.net)
-blog (index + article) operationnal and mobile improvement at 95%
-personnalized error pages in progress
-2 new ideas in dev
-  a new app for a bunch of static pages (CV,...)
-  another app for a photo galery
+app on line (snizac.ddns.net)<br>
+blog (index + article) operationnal and mobile improvement at 95%<br>
+personnalized error pages in progress<br>
+2 new ideas in dev<br>
+  a new app for a bunch of static pages (CV,...)<br>
+  another app for a photo galery<br>
 
 june 26th 2015
 
-OK, OPC training is finished, back to devellopment
-first => the blog/index page
-second => users and membre restricted pages
+OK, OPC training is finished, back to devellopment<br>
+first => the blog/index page<br>
+second => users and membre restricted pages<br>
