@@ -7,23 +7,23 @@
 {% endblock %}
 
 {% block content %}
-<section class="row">
+<section class="row" ng-app="PhotoGalery" ng-controller="PhotoCtrl">
     <aside class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 panneau_lat">
-        <p>Figurines</p>
+        <p ng-click="total()">Figurines</p>
     <ul>
     {% for sidemenu in sidemenus %}
     {% for fac in sidemenu %}
         {% if forloop.counter0 == 0 %}
-        <li class="faction"><a href="">{{ fac }}</a></li>
+        <li class="faction" ng-click="filtre('F', {{ fac.id }})">{{ fac }}</li>
         {% else %}
         {% for sect in fac %}
         {% if forloop.counter0 == 0 %}
         <ul>
-            <li class="sectorielle">{{ sect }}</li>
+            <li class="sectorielle" ng-click="filtre('s', {{ sect.id }})">{{ sect }}</li>
         {% else %}
             <ul>
                 {% for fig in sect %}
-                <li class="figurine" >{{ fig }}</li>
+                <li class="figurine" ng-click="filtre('f', {{ fig.id }})">{{ fig }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
@@ -36,9 +36,9 @@
     </aside>
 
 
-    <article class="container marg" ng-app="PhotoGalery">
+    <article class="container marg">
 
-        <article ng-controller="PhotoAllCtrl">
+        <article>
             <div ng-repeat="photo in photos" class="col-md-4 thumb">
 
                 <a data-lightbox="main" data-title="[[ photo.fig ]]" class="thumbnail" ng-href="[[ photo.pic_path | truncate:8 ]]">

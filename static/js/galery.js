@@ -5,11 +5,24 @@ App.config(function($interpolateProvider) {
     $interpolateProvider.endSymbol(']]');
 });
 
-App.controller('PhotoAllCtrl', function($scope, $http) {
+App.controller('PhotoCtrl', function($scope, $http) {
+
     $http.get('json')
         .then(function(res){
             $scope.photos = res.data;
         });
+
+    $scope.total = function(){
+        $http.get('json').then(function(res){
+            $scope.photos = res.data;
+        });
+    };
+
+    $scope.filtre = function(sep, id){
+        $http.get(sep+'/'+id+'/json').then(function(res){
+            $scope.photos = res.data;
+        });
+    };
 });
 
 angular.module('filters', []).
