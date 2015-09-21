@@ -20,21 +20,17 @@ App.controller('PhotoCtrl', function($scope, $http) {
 
     $scope.filtre = function(faction, sectorielle, figurine){
         
-        if (isNaN(figurine)) {
-            if (isNaN(sectorielle)) {
-                if (isNaN(faction)) {
-                    ???
-                } else {
-                    var added = faction
-                }
-            } else {
-                var added = faction+'/'+sectorielle
-            }
-        } else {
-            var added = faction+'/'+sectorielle+'/'+figurine
+        var added = faction
+        
+        if (!isNaN(sectorielle)) {
+            added += '/' + sectorielle
         }
         
-        $http.get(added+'/json').then(function(res){
+        if (!isNaN(figurine)) {
+            added += '/' + figurine
+        }
+        
+        $http.get(added + '/json').then(function(res){
             $scope.photos = res.data;
         });
     };
