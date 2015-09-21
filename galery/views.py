@@ -62,16 +62,13 @@ def pics_list(request, faction = None, secto = None, fig = None):
 
     if faction == None and secto == None and fig == None:
         pics = Photo.objects.all()
-        serializer = PhotoSerializer(pics, many = True)
     elif faction != None and secto == None and fig == None:
         pics = Photo.objects.filter(faction = faction)
-        serializer = PhotoSerializer(pics, many = True)
     elif faction != None and secto != None and fig == None:
-        pics = Photo.objects.filter(sectorial = secto)
-        serializer = PhotoSerializer(pics, many = True)
+        pics = Photo.objects.filter(faction = faction, sectorial = secto)
     elif faction != None and secto != None and fig != None:
-        pics = Photo.objects.filter(fig = fig)
-        serializer = PhotoSerializer(pics, many = True)
-
+        pics = Photo.objects.filter(faction = faction, sectorial = secto, fig = fig)
+        
+    serializer = PhotoSerializer(pics, many = True)
     return Response(serializer.data)
 
