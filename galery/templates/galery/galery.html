@@ -19,11 +19,11 @@
         {% for sect in fac %}
         {% if forloop.counter0 == 0 %}
         <ul>
-            <li class="sectorielle" ng-click="filtre({{ sidemenu[0].id }}, {{ sect.id }})">{{ sect }}</li>
+            <li class="sectorielle" ng-click="filtre({{ sidemenu.0.id }}, {{ sect.id }})">{{ sect }}</li>
         {% else %}
             <ul>
                 {% for fig in sect %}
-                <li class="figurine" ng-click="filtre({{ sidemenu[0].id }}, {{ fac[0].id }}, {{ fig.id }})">{{ fig }}</li>
+                <li class="figurine" ng-click="filtre({{ sidemenu.0.id }}, {{ fac.0.id }}, {{ fig.id }})">{{ fig }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
