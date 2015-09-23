@@ -3,6 +3,12 @@ evolution of the octopus web site, now powered by Django! maybe you will find he
 
 Everything is in progress, many commits incoming!
 
+september 23rd 2015
+
+  filters modified to deal with a few unusual situations<br>
+  i.e. sectorial defined as "Sans sectorielle" existe in all factions, previous filter can't deal with that situation<br>
+  nothing tested, so I create a branch for galery responsive. Tried with bootstrap's offcanvas.
+
 september 21st 2015
 
   filters are operationnal<br>
