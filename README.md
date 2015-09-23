@@ -12,7 +12,7 @@ september 23rd 2015
 september 21st 2015
 
   filters are operationnal<br>
-  I can modify/improve them a little
+  I can modify/improve them a little<br>
   next step, make the galery reponsive
 
 september 18th 2015
