@@ -8,11 +8,13 @@
 {% endblock %}
 
 {% block content %}
-<section class="row" ng-app="PhotoGalery" ng-controller="PhotoCtrl">
-    <aside class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 panneau_lat">
-        <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-        </p>
+<section class="row row-offcanvas row-offcanvas-left" ng-app="PhotoGalery" ng-controller="PhotoCtrl">
+    
+    <p class="pull-right visible-xs">
+        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    
+    <aside class="col-xs-6 col-sm-3 col-md-1 col-lg-1 col-md-offset-1 col-lg-offset-1 panneau_lat sidebar-offcanvas" id="sidebar">
         <p ng-click="total()">Figurines</p>
     <ul>
     {% for sidemenu in sidemenus %}
@@ -39,11 +41,10 @@
     </ul>
     </aside>
 
-
-    <article class="container marg">
+    <article class="container marg col-xs-12 col-sm-9">
 
         <article>
-            <div ng-repeat="photo in photos" class="col-md-4 thumb">
+            <div ng-repeat="photo in photos" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 thumb">
 
                 <a data-lightbox="main" data-title="[[ photo.fig ]]" class="thumbnail" ng-href="[[ photo.pic_path | truncate:8 ]]">
                     <img class="img-responsive miniature" ng-src="[[ photo.pic_path | truncate:8 ]]" alt="Generic placeholder image" />
