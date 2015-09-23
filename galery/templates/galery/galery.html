@@ -3,12 +3,16 @@
 {% block style %}
     {% load static %}
     <link rel="stylesheet" href={% static 'css/galery.css' %} />
+    <link rel="stylesheet" href={% static 'css/offcanvas.css' %} />
     <link rel="stylesheet" href={% static 'lightbox/dist/css/lightbox.css' %} />
 {% endblock %}
 
 {% block content %}
 <section class="row" ng-app="PhotoGalery" ng-controller="PhotoCtrl">
     <aside class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 panneau_lat">
+        <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+        </p>
         <p ng-click="total()">Figurines</p>
     <ul>
     {% for sidemenu in sidemenus %}
@@ -59,5 +63,6 @@
 {% block javascript %}
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 <script src="{% static "js/galery.js" %}"></script>
+<script src="{% static "js/offcanvas.js" %}"></script>
 <script src="{% static "lightbox/dist/js/lightbox.js" %}"></script>
 {% endblock %}
