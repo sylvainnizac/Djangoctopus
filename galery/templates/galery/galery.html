@@ -10,12 +10,12 @@
 {% block content %}
 <section class="row row-offcanvas row-offcanvas-left" ng-app="PhotoGalery" ng-controller="PhotoCtrl">
     
-    <p class="pull-right visible-xs">
+    <p class="pull-left visible-xs">
         <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
     </p>
     
-    <aside class="col-xs-6 col-sm-3 col-md-1 col-lg-1 col-md-offset-1 col-lg-offset-1 panneau_lat sidebar-offcanvas" id="sidebar">
-        <p ng-click="total()">Figurines</p>
+    <aside class="col-xs-3 col-sm-3 col-md-1 col-lg-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 panneau_lat sidebar-offcanvas" id="sidebar">
+        <p ng-click="filtre()">Figurines</p>
     <ul>
     {% for sidemenu in sidemenus %}
     {% for fac in sidemenu %}

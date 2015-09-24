@@ -12,25 +12,25 @@ App.controller('PhotoCtrl', function($scope, $http) {
             $scope.photos = res.data;
         });
 
-    $scope.total = function(){
-        $http.get('json').then(function(res){
-            $scope.photos = res.data;
-        });
-    };
-
     $scope.filtre = function(faction, sectorielle, figurine){
-        
-        var added = faction
+
+        var added = ''
+
+        if (!isNaN(faction)){
+            added += faction + '/'
+        }
         
         if (!isNaN(sectorielle)) {
-            added += '/' + sectorielle
+            added += sectorielle + '/'
         }
         
         if (!isNaN(figurine)) {
-            added += '/' + figurine
+            added += figurine + '/'
         }
-        
-        $http.get(added + '/json').then(function(res){
+
+        added += 'json'
+
+        $http.get(added).then(function(res){
             $scope.photos = res.data;
         });
     };
